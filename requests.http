@@ -1,0 +1,24 @@
+
+GET http://localhost:3000/
+
+### USER'S REQUESTS
+POST http://localhost:3000/users/signup/
+Content-Type: application/json
+
+{
+    "userName": "william12",
+    "password": "william1207",
+    "role": "etudiant",
+    "email": "wil@gmail.com",
+    "userInfo": " Très brillant",
+    "phoneNumber": "0817608201"
+}
+
+### get user by id
+GET http://localhost:3000/users/62f94b685c0ae27520d316da
+
+### Get user by user name
+GET http://localhost:3000/users?user=william10
+
+### Get all users
+POST  http://localhost:3000/users/

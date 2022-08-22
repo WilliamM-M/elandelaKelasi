@@ -1,6 +1,7 @@
 # compiled output
 /dist
 /node_modules
+me.txt
 
 # Logs
 logs

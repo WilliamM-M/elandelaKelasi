@@ -1,15 +1,48 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  Session,
+  UseGuards,
+} from '@nestjs/common';
+import { pseudoRandomBytes } from 'crypto';
+import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthService } from './auth.service';
+import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDto } from './dtos/create-user.dto';
+import { SigninDto } from './dtos/signin-user.dto';
+import { User } from './users.entity';
 import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+  ) {}
 
+  // @Get('/whoami')
+  // whoAmI(@Session() session: any) {
+  //   return this.usersService.findOne(session.userId);
+  // }
+
+  @Get('/whoami')
+  @UseGuards(AuthGuard)
+  whoAmI(@CurrentUser() user: User) {
+    return user;
+  }
+
+  @Post('/signout')
+  signOut(@Session() session: any) {
+    session.userId = null;
+  }
   // This route allows us to create an user
   @Post('/signup')
-  async createUser(@Body() body: CreateUserDto) {
-    const user = await this.usersService.createUser(
+  async createUser(@Body() body: CreateUserDto, @Session() session: any) {
+    const user = await this.authService.signup(
       body.userName,
       body.password,
       body.role,
@@ -17,7 +50,15 @@ export class UsersController {
       body.userInfo,
       body.phoneNumber,
     );
-    console.log(body instanceof CreateUserDto);
+    // console.log(body instanceof CreateUserDto);
+    session.Id = user._id;
+    return user;
+  }
+
+  @Post('/signin')
+  async signin(@Body() body: SigninDto, @Session() session: any) {
+    const user = await this.authService.signin(body.email, body.password);
+    session.userId = user._id;
     return user;
   }
 

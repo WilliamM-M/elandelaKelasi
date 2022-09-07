@@ -6,19 +6,32 @@ POST http://localhost:3000/users/signup/
 Content-Type: application/json
 
 {
-    "userName": "william12",
+    "userName": "william le beau",
     "password": "william1207",
     "role": "etudiant",
-    "email": "wil@gmail.com",
+    "email": "c@c.com",
     "userInfo": " Très brillant",
     "phoneNumber": "0817608201"
 }
+
+### SignIn
+POST  http://localhost:3000/users/signin
+Content-Type: application/json
+
+{
+    "password": "william1207",
+    "email": "cac@cac.com"
+}
+### Get the currently signed in user
+GET http://localhost:3000/users/whoami
+
+### Sign out
+POST http://localhost:3000/users/signout
+
 
 ### get user by id
 GET http://localhost:3000/users/62f94b685c0ae27520d316da
 
 ### Get user by user name
-GET http://localhost:3000/users?user=william10
+GET http://localhost:3000/users?user=william12
 
-### Get all users
-POST  http://localhost:3000/users/

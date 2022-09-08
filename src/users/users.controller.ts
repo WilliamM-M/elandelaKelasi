@@ -1,8 +1,10 @@
 import {
   Body,
   Controller,
+  Delete,
   Get,
   Param,
+  Patch,
   Post,
   Query,
   Session,
@@ -14,6 +16,7 @@ import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { SigninDto } from './dtos/signin-user.dto';
+import { UpdateUserDto } from './dtos/update-user.dto';
 import { User } from './users.entity';
 import { UsersService } from './users.service';
 
@@ -39,6 +42,7 @@ export class UsersController {
   signOut(@Session() session: any) {
     session.userId = null;
   }
+
   // This route allows us to create an user
   @Post('/signup')
   async createUser(@Body() body: CreateUserDto, @Session() session: any) {
@@ -82,5 +86,17 @@ export class UsersController {
   findUserByName(@Query('user') user: string) {
     console.log(user);
     return this.usersService.getUserByName(user);
+  }
+
+  @Delete('/:id')
+  removeUser(@Param('id') id: string) {
+    return this.usersService.remove(id);
+  }
+
+  @Patch('/:id')
+  updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
+    if (body.password) {
+    }
+    return this.usersService.update(id, body);
   }
 }

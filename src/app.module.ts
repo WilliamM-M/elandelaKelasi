@@ -29,6 +29,7 @@ import { UsersModule } from './users/users.module';
       useNewUrlParser: true,
       logging: true,
       synchronize: true,
+      //entities: [join(__dirname, '**/**.entity{.ts, .js}')],
     }),
   ],
   controllers: [AppController],

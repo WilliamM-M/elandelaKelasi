@@ -6,11 +6,11 @@ POST http://localhost:3000/users/signup/
 Content-Type: application/json
 
 {
-    "userName": "william le beau",
-    "password": "william1207",
+    "userName": "wilmut",
+    "password": "1207",
     "role": "etudiant",
-    "email": "c@c.com",
-    "userInfo": " Très brillant",
+    "email": "wil@gmail.com",
+    "userInfo": "électronicien",
     "phoneNumber": "0817608201"
 }
 

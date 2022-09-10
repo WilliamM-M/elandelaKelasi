@@ -1,15 +1,18 @@
 
+//Principal root : Hello word!
 GET http://localhost:3000/
 
 ### USER'S REQUESTS
+
+### Create user
 POST http://localhost:3000/users/signup/
 Content-Type: application/json
 
 {
-    "userName": "glodi",
+    "userName": "william",
     "password": "1207",
     "role": "etudiant",
-    "email": "grace@gmail.com",
+    "email": "william@gmail.com",
     "userInfo": "électronicien",
     "phoneNumber": "0817608201"
 }
@@ -19,8 +22,8 @@ POST  http://localhost:3000/users/signin
 Content-Type: application/json
 
 {
-    "password": "1207",
-    "email": "grace@gmail.com"
+    "password": "1234",
+    "email": "william@gmail.com"
 }
 ### Get the currently signed in user
 GET http://localhost:3000/users/whoami
@@ -33,16 +36,19 @@ POST http://localhost:3000/users/signout
 GET http://localhost:3000/users/63193748f16f1d2154e200f0
 
 ### Get user by user name
-GET http://localhost:3000/users?user=william12
+GET http://localhost:3000/users?user=william
 
-### Delete a user given id
+### Delete user given id
 DELETE http://localhost:3000/users/6319e8ade578345d28829139
 
-### Update user given id
+### Update user given id Note les champs sont optionnels, ie on peut updater seulement un champ
 PATCH http://localhost:3000/users/631a0cf7008092282c45abd3
 Content-Type: application/json
 
 {
-    "email": "nganda@gmail.com",
-    "password": "1234"
+    "userName": "william",
+    "password": "1207",
+    "email": "william@gmail.com",
+    "userInfo": "électronicien",
+    "phoneNumber": "0817608201"
 }

@@ -5,6 +5,7 @@ import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
+import { TeachersModule } from './teachers/teachers.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { UsersModule } from './users/users.module';
       synchronize: true,
       //entities: [join(__dirname, '**/**.entity{.ts, .js}')],
     }),
+    TeachersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UsersModule } from './users/users.module';
 import { TeachersModule } from './teachers/teachers.module';
+import { doesNotReject } from 'assert';
 
 @Module({
   imports: [
@@ -32,7 +33,7 @@ import { TeachersModule } from './teachers/teachers.module';
       synchronize: true,
       //entities: [join(__dirname, '**/**.entity{.ts, .js}')],
     }),
-    TeachersModule,
+    // TeachersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

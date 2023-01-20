@@ -16,22 +16,8 @@ export class UsersService {
   ) {}
 
   // Create a user
-  createUser(
-    userName: string,
-    password: string,
-    role: string,
-    email: string,
-    userInfo: string,
-    phoneNumber: string,
-  ) {
-    const user = this.usersRepository.create({
-      userName,
-      password,
-      role,
-      email,
-      userInfo,
-      phoneNumber,
-    });
+  createUser(users) {
+    const user = this.usersRepository.create(users);
 
     return this.usersRepository.save(user);
   }

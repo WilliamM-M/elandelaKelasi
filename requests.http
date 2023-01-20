@@ -10,9 +10,9 @@ Content-Type: application/json
 
 {
     "userName": "william",
-    "password": "1207",
+    "password": "1111",
     "role": "etudiant",
-    "email": "william@gmail.com",
+    "email": "titi@gmail.com",
     "userInfo": "électronicien",
     "phoneNumber": "0817608201"
 }
@@ -22,8 +22,8 @@ POST  http://localhost:3000/users/signin
 Content-Type: application/json
 
 {
-    "password": "1234",
-    "email": "william@gmail.com"
+    "password": "1111",
+    "email": "tata@gmail.com"
 }
 ### Get the currently signed in user
 GET http://localhost:3000/users/whoami

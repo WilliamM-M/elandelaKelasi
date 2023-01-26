@@ -4,13 +4,14 @@ import { join } from 'path';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
 import { TeachersModule } from './teachers/teachers.module';
-import { doesNotReject } from 'assert';
+import { TeachersService } from './teachers/teachers.service';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
     UsersModule,
+    TeachersModule,
     // TypeOrmModule.forRoot({
     //   name: 'default',
     //   type: 'mongodb',

@@ -6,6 +6,7 @@ import { User } from './users.entity';
 
 import { randomBytes, scrypt as _scrypt } from 'crypto';
 import { promisify } from 'util';
+import { CreateUserDto } from './dtos/create-user.dto';
 
 const scrypt = promisify(_scrypt);
 
@@ -16,7 +17,7 @@ export class UsersService {
   ) {}
 
   // Create a user
-  createUser(users) {
+  createUser(users: CreateUserDto) {
     const user = this.usersRepository.create(users);
 
     return this.usersRepository.save(user);
@@ -42,6 +43,7 @@ export class UsersService {
 
   //finding user by email
   find(email: string) {
+    console.log(email);
     if (!email) {
       return null;
     }

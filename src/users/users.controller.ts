@@ -12,6 +12,7 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { AuthGuard } from 'src/guards/auth.guard';
+import { AuthService } from './auth.service';
 import { CurrentUser } from './decorators/current-user.decorator';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { SigninDto } from './dtos/signin-user.dto';
@@ -21,7 +22,10 @@ import { UsersService } from './users.service';
 
 @Controller('users')
 export class UsersController {
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+  ) {}
 
   // @Get('/whoami')
   // whoAmI(@Session() session: any) {
@@ -39,21 +43,20 @@ export class UsersController {
     session.userId = null;
   }
 
-  // This route allows us to create an user
-  // @Post('/signup')
-  // async createUser(@Body() body: CreateUserDto, @Session() session: any) {
-  //   const user = await this.authService.signup(body);
-  //   // console.log(body instanceof CreateUserDto);
-  //   session.Id = user._id;
-  //   return user;
-  // }
+  //This route allows us to create an user
+  @Post('/signup')
+  async createUser(@Body() body: CreateUserDto) {
+    console.log(body);
+    const user = await this.authService.signup(body);
+    console.log(body);
+    return user;
+  }
 
-  // @Post('/signin')
-  // async signin(@Body() body: SigninDto, @Session() session: any) {
-  //   const user = await this.authService.validateUser(body);
-  //   session.userId = user._id;
-  //   return user;
-  // }
+  @Post('/signin')
+  async signin(@Body() body: SigninDto) {
+    const user = await this.authService.signin(body);
+    return user;
+  }
 
   // This route allows us to get user by id
   @Get('/:id')

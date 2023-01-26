@@ -9,10 +9,10 @@ POST http://localhost:3000/users/signup/
 Content-Type: application/json
 
 {
-    "userName": "william",
-    "password": "1111",
-    "role": "etudiant",
-    "email": "titi@gmail.com",
+    "userName": "Leo",
+    "password": "maz",
+    "role": "ass",
+    "email": "leo@gmail.com",
     "userInfo": "électronicien",
     "phoneNumber": "0817608201"
 }
@@ -22,32 +22,28 @@ POST  http://localhost:3000/users/signin
 Content-Type: application/json
 
 {
-    "password": "1111",
-    "email": "tata@gmail.com"
+    "password": "mutombo",
+    "email": "wiam@gmail.com"
 }
-### Get the currently signed in user
-GET http://localhost:3000/users/whoami
-
-### Sign out
-POST http://localhost:3000/users/signout
-
+### get all users
+POST  http://localhost:3000/users/
 
 ### get user by id
-GET http://localhost:3000/users/63193748f16f1d2154e200f0
+GET http://localhost:3000/users/63d2cb983699ca2cb433fb09
 
 ### Get user by user name
-GET http://localhost:3000/users?user=william
+GET http://localhost:3000/users?user=mutombo_exousia
 
 ### Delete user given id
-DELETE http://localhost:3000/users/6319e8ade578345d28829139
+DELETE http://localhost:3000/users/63d2a16593661034481ec534
 
 ### Update user given id Note les champs sont optionnels, ie on peut updater seulement un champ
-PATCH http://localhost:3000/users/631a0cf7008092282c45abd3
+PATCH http://localhost:3000/users/63d2cb983699ca2cb433fb09
 Content-Type: application/json
 
 {
-    "userName": "william",
-    "password": "1207",
+   
+    "password": "mutombo",
     "email": "william@gmail.com",
     "userInfo": "électronicien",
     "phoneNumber": "0817608201"

@@ -1,0 +1,15 @@
+
+
+### Create user
+POST http://localhost:3000/teachers/create/
+Content-Type: application/json
+
+{
+    "lastName": "Kamba_New",
+    "firstName": "beya",
+    "middleName": "Jean-marie",
+    "teacherNumber": "kbeya@gmail.com",
+    "grade": "PO",
+    "role": "number",
+    "gender": "M"
+}

@@ -13,12 +13,12 @@ async function bootstrap() {
   //     keys: ['asdfasdf'],
   //   }),
   // );
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      transform: true,
-    }),
-  );
+  // app.useGlobalPipes(
+  //   new ValidationPipe({
+  //     whitelist: true,
+  //     transform: true,
+  //   }),
+  // );
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
